@@ -1,3 +1,8 @@
+#!/usr/bin/python3
 # __init__.py
+"""Initialises package"""
 
-print("Initialising Airbnb console")
+from models.engine.file_storage import FileStorage
+
+storage = FileStorage()
+storage.reload()

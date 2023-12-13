@@ -14,8 +14,17 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
-classes = {"Amenity": Amenity, "baseModel": BaseModel, "City": City,
-        "Place": Place, "Review": Review, "State": State, "User": User}
+classes = {
+        "Amenity": Amenity,
+        "baseModel": BaseModel,
+        "City": City,
+        "Place": Place,
+        "Review": Review,
+        "State": State,
+        "User": User
+        }
+
+
 class HBNBCommand(cmd.Cmd):
     """
     A class representing the console commands
@@ -26,7 +35,6 @@ class HBNBCommand(cmd.Cmd):
         """Provides help for commands"""
         if args:
             super().do_help(args)
-        
         else:
             print("Documented commands (type help <topic>):")
             print("========================================")
@@ -67,20 +75,21 @@ class HBNBCommand(cmd.Cmd):
         Prints the string representation of an instance based on the
         class name and id
         """
-        arg = shlex.split(args):
-            if len(arg) == 0:
-                print("** class name is missing **")
-                return False
-            if arg[0] in classes:
-                if len(arg) > 1:
-                    key = arg[0] + "." + arg[1]
-                    if key in models.storage.all():
-                        print(models.storage.all()[key])
-                    else:
-                        print("**no instance found **")
+        arg = shlex.split(args)
+        if len(arg) == 0:
+            print("** class name is missing **")
+            return False
+        if arg[0] in classes:
+            if len(arg) > 1:
+                key = arg[0] + "." + arg[1]
+                if key in models.storage.all():
+                    print(models.storage.all()[key])
                 else:
-                    print("** instance id missing **")
-            else print("class doesn't exist **")
+                    print("**no instance found **")
+            else:
+                print("** instance id missing **")
+        else:
+            print("class doesn't exist **")
 
     def do_destroy(self, args):
         """
@@ -102,6 +111,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist")
+
     def do_all(self, args):
         """
         Prints all string representation of all instances based or
@@ -128,8 +138,12 @@ class HBNBCommand(cmd.Cmd):
         updating attribute (save the change into the JSON file)
         """
         arg = shlex.split(args)
-        integers = ["number_rooms", "number_bathrooms",
-                "max_guest", "price_by_night"]
+        integers = [
+            "number_rooms",
+            "number_bathrooms",
+            "max_guest",
+            "price_by_night"
+            ]
         floats = ["latitude", "longitude"]
         if len(arg) == 0:
             print("** class name missing **")
@@ -143,12 +157,12 @@ class HBNBCommand(cmd.Cmd):
                                 if args[2] in integers:
                                     try:
                                         arg[3] = int(args[3])
-                                    except:
+                                    except KeyError as e:
                                         args[3] = 0
                                 elif arg[2] in floats:
                                     try:
                                         arg[3] = float(arg[3])
-                                    except:
+                                    except AttributeError as e:
                                         arg[3] = 0.0
                             setattr(models.storage.all()[k], arg[2], arg[3])
                             models.storage.all()[k].save()
@@ -162,6 +176,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()

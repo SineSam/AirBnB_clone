@@ -17,7 +17,7 @@ class BaseModel:
         *args (list): arguments
         **kwargs (dictionary): Key values in args
         """
-        if kwargs != None and kwargs != {}:
+        if kwargs is not None and kwargs is not {}:
             for key in kwargs:
                 if key == "created_at":
                     self.__dict__["created_at"] = datetime.strptime(

@@ -1,5 +1,5 @@
 #!/user/bin/python3
-#user.py
+# user.py
 
 """defines the user class"""
 import models
@@ -21,6 +21,6 @@ class User(BaseModel, Base):
     last_name = ""
 
 
-    def __init__(self, *args, **kwargs):
-        """Initialise user"""
-        super().__init__(*args, **kwargs)
+def __init__(self, *args, **kwargs):
+    """Initialise user"""
+    super().__init__(*args, **kwargs)

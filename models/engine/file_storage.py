@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-#file_storage.py
+# file_storage.py
 
 """ Define FileStorage"""
 
 import json
 import os
 import datetime
+
 
 class FileStorage:
     """
@@ -18,7 +19,6 @@ class FileStorage:
 
     __file_path = "file.json"
     __objects = {}
-
 
     def all(self):
         """returns the dictionary __objects"""
@@ -36,7 +36,9 @@ class FileStorage:
             json.dump(d, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects if path exists else exists"""
+        """
+        deserializes the JSON file to __objects if path exists else exists
+        """
         try:
             with open(self.__file_path, 'r', encoding="utf-8") as f:
                 json_obj = json.load(f)

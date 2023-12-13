@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-#city.py
+# city.py
 
 """defines City class"""
 import models
 from models.base_model import BaseModel, Base
+
 
 class City(BaseModel, Base):
     """Attributes of City class"""

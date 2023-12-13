@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 """Define the HBNBC class"""
+import os
 import cmd
 import readline
 import shlex
@@ -52,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def do_creat(self, args):
+    def do_create(self, args):
         """
         Creates a new instance of BaseModel, saves it (to the JSON file)
         and prints the id"

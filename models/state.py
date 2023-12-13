@@ -4,6 +4,7 @@
 import models
 from models.base_model import BaseModel, Base
 
+
 class State(BaseModel, Base):
     """Public class attribute representing the state"""
     name = ""

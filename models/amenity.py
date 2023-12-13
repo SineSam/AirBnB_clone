@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-#amenity.py
+# amenity.py
 
 """Defines Amenity class"""
+
 
 class Amenity(BaseModel, Base):
     """Attributes of Amenity class"""
